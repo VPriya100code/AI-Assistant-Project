@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AI Assistant</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+
+    <style>
+       body {
+            font-family: Arial;
+            padding: 20px;
+            background-image: url("{{ url_for('static', filename='bg.png') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px #b0b0b0;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        select,
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #4462ff;
+            color: white;
+            font-weight: bold;
+            border: none;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f5f7ff;
+            border-radius: 10px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>🤖Welcome to your AI Assistant !🚀</h2>
+
+        <form method="POST">
+            <textarea name="user_input" placeholder="Enter your text"></textarea>
+
+            <select name="task">
+                <option value="question">Answer a Question</option>
+                <option value="summary">Summarize Text</option>
+                <option value="creative">Generate Creative Content</option>
+            </select>
+
+            <button type="submit">Generate 👆</button>
+        </form>
+
+        {% if result %}
+        <div class="result-box">
+            <h3>Output:</h3>
+            {{result}}
+        </div>
+        {% if feedback_mode %}
+        <form method="POST">
+            <p><strong>Was this response helpful? 👍</strong></p>
+            <button type="submit" name="feedback" value="yes">Yes</button>
+            <button type="submit" name="feedback" value="no">No</button>
+        </form>
+        {% endif %}
+        {% endif %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+# Prevent API key exposure
+assistant_logic.py
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Feedback file
+feedback.txt
+
+# Environment files (if added later)
+.env
