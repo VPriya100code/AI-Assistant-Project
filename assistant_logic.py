@@ -1,3 +1,4 @@
+import os 
 from groq import Groq
 from prompts import question_prompt, summary_prompt, creative_prompt
 
@@ -28,3 +29,4 @@ def generate_creative(user_input):
         messages=[{"role": "user", "content": prompt}]
     )
     return response.choices[0].message.content
+
